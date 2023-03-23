@@ -1,0 +1,13 @@
+version: '2'
+services:
+    tgbot:
+        container_name: tgbot
+        build:
+            context: .
+            dockerfile: ./tg/Dockerfile
+        restart: always  # Restart container if it crashes or server reboots
+        volumes:
+            - .:/app  # Mount current directory to /app
+        environment:
+            - TZ=Europe/Kiev  # Set timezone
+            - PYTHONUNBUFFERED=1  # Disable buffering, cuz print() is not working
